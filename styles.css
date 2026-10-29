@@ -52,12 +52,7 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
 /* Traditional Thalaiyatti Bommai dancing pair */
 .dancing-dolls {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 36px;
-  padding: 25px 10px 35px;
-  overflow: hidden;
+  display: none;
 }
 
 .doll {
@@ -236,6 +231,46 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
 
 @media (prefers-reduced-motion: reduce) {
   .doll, .doll-head, .arm {
+    animation: none;
+  }
+}
+/* Festive dolls scattered across the screen */
+.doll-party {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.party-doll {
+  position: absolute;
+  width: 100px;
+  height: 165px;
+  transform-origin: center;
+  animation: dollFloat var(--duration, 2s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+.party-doll .doll {
+  display: block;
+  transform: scale(.75);
+  transform-origin: top left;
+}
+
+@keyframes dollFloat {
+  from { translate: 0 0; rotate: -8deg; }
+  to { translate: 0 -14px; rotate: 8deg; }
+}
+
+@media (max-width: 600px) {
+  .party-doll {
+    scale: .65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .party-doll {
     animation: none;
   }
 }
