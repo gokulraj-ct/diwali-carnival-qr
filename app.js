@@ -308,44 +308,54 @@ els.share.addEventListener("click", async () => {
 // The first fact appears automatically when the QR destination opens.
 refillBag();
 showFact(false);
-// Scatter traditional dancing dolls around the viewport
-const dollParty = document.getElementById("doll-party");
 
-if (dollParty) {
-  const positions = [
-    { top: "5%", left: "3%" },
-    { top: "12%", left: "84%" },
-    { top: "30%", left: "1%" },
-    { top: "24%", left: "91%" },
-    { top: "47%", left: "5%" },
-    { top: "43%", left: "88%" },
-    { top: "65%", left: "2%" },
-    { top: "70%", left: "92%" },
-    { top: "82%", left: "15%" },
-    { top: "86%", left: "78%" }
+
+// Create a festive scattering of CSS-drawn traditional dolls.
+(() => {
+  const party = document.getElementById("doll-party");
+  const template = document.getElementById("doll-template");
+
+  if (!party || !template) return;
+
+  const desktopPositions = [
+    { top: "7%", left: "3%" },
+    { top: "15%", left: "88%" },
+    { top: "27%", left: "9%" },
+    { top: "34%", left: "93%" },
+    { top: "47%", left: "2%" },
+    { top: "52%", left: "86%" },
+    { top: "65%", left: "7%" },
+    { top: "71%", left: "92%" },
+    { top: "82%", left: "17%" },
+    { top: "84%", left: "78%" }
   ];
 
-  // Reuse your existing doll HTML as the character template.
-  const template = document.querySelector(".dancing-dolls .doll");
+  const mobilePositions = [
+    { top: "12%", left: "0%" },
+    { top: "30%", left: "83%" },
+    { top: "57%", left: "0%" },
+    { top: "76%", left: "84%" }
+  ];
 
-  if (template) {
-    positions.forEach((pos, index) => {
-      const wrapper = document.createElement("div");
-      wrapper.className = "party-doll";
-      wrapper.style.top = pos.top;
-      wrapper.style.left = pos.left;
-      wrapper.style.setProperty(
-        "--duration",
-        `${1.5 + Math.random() * 1.5}s`
-      );
-      wrapper.style.setProperty(
-        "--delay",
-        `${Math.random() * -2}s`
-      );
+  const positions = window.innerWidth <= 600 ? mobilePositions : desktopPositions;
 
-      const doll = template.cloneNode(true);
-      wrapper.appendChild(doll);
-      dollParty.appendChild(wrapper);
-    });
-  }
-}
+  positions.forEach((position, index) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "party-doll";
+    wrapper.style.top = position.top;
+    wrapper.style.left = position.left;
+    wrapper.style.setProperty("--duration", `${1.6 + (index % 4) * 0.35}s`);
+    wrapper.style.setProperty("--delay", `${-(index * 0.27)}s`);
+
+    const clone = template.content.firstElementChild.cloneNode(true);
+    const doll = clone.querySelector(".doll");
+    if (doll && index % 2 === 1) {
+      doll.classList.remove("doll-left");
+      doll.classList.add("doll-right");
+    }
+
+    wrapper.appendChild(clone);
+    party.appendChild(wrapper);
+  });
+})();
+
