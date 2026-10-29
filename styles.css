@@ -50,3 +50,192 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
 @media(min-height:850px){.page{padding-top:32px;padding-bottom:25px}.hero{padding-top:6vh;padding-bottom:25px}.fact-card{padding-top:28px;padding-bottom:20px}}
 @media(max-width:420px){.page{width:calc(100% - 24px);padding-top:16px}.brand-mark{width:36px;height:36px}.eyebrow{font-size:8px;letter-spacing:1.2px}.brand{font-size:13px}.live-pill{font-size:8px;padding:7px}.hero{padding-top:28px}.hero-kicker{font-size:8px;letter-spacing:1.3px;gap:6px}.fact-card{padding:18px 17px 15px;border-radius:19px}.fact-text{min-height:70px}.stamp{font-size:8px;padding:6px 8px}.fact-count{font-size:8px}.diya-left{left:1%;bottom:5%}.diya-right{right:1%;bottom:7%}footer{font-size:8px;letter-spacing:1.4px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+/* Traditional Thalaiyatti Bommai dancing pair */
+.dancing-dolls {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 36px;
+  padding: 25px 10px 35px;
+  overflow: hidden;
+}
+
+.doll {
+  position: relative;
+  width: 100px;
+  height: 165px;
+  transform-origin: bottom center;
+  animation: dollDance 1.2s ease-in-out infinite alternate;
+}
+
+.doll-right {
+  animation-delay: -.6s;
+}
+
+.doll-head {
+  position: absolute;
+  z-index: 3;
+  width: 68px;
+  height: 68px;
+  left: 16px;
+  top: 0;
+  border: 3px solid #9d542e;
+  border-radius: 46% 46% 44% 44%;
+  background: #f4b67e;
+  transform-origin: center bottom;
+  animation: headBob .65s ease-in-out infinite alternate;
+}
+
+.doll-right .doll-head {
+  animation-delay: -.3s;
+  background: #eeb07b;
+}
+
+.hair {
+  position: absolute;
+  left: -3px;
+  top: -5px;
+  width: 68px;
+  height: 24px;
+  border-radius: 50% 50% 25% 25%;
+  background: #25132b;
+}
+
+.face {
+  position: absolute;
+  inset: 17px 7px 5px;
+  border-radius: 40%;
+  background: #f7c18b;
+}
+
+.eye {
+  position: absolute;
+  top: 9px;
+  width: 5px;
+  height: 7px;
+  border-radius: 50%;
+  background: #29152d;
+}
+
+.eye-left { left: 10px; }
+.eye-right { right: 10px; }
+
+.bindi {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e52e51;
+  transform: translateX(-50%);
+}
+
+.smile {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 17px;
+  height: 8px;
+  border-bottom: 3px solid #a62e37;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.crown {
+  position: absolute;
+  z-index: 2;
+  top: -15px;
+  left: 23px;
+  color: #ffd75f;
+  font-size: 27px;
+  text-shadow: 0 0 5px #ff9e43;
+}
+
+.neck {
+  position: absolute;
+  top: 62px;
+  left: 42px;
+  width: 16px;
+  height: 15px;
+  background: #d9945e;
+}
+
+.doll-body {
+  position: absolute;
+  top: 70px;
+  left: 18px;
+  width: 64px;
+  height: 62px;
+  border: 3px solid #b77a29;
+  border-radius: 15px 15px 28px 28px;
+  background: linear-gradient(90deg, #b82040, #f04f54, #b82040);
+  display: grid;
+  place-items: center;
+}
+
+.doll-right .doll-body {
+  background: linear-gradient(90deg, #087e68, #24b58b, #087e68);
+}
+
+.ornament {
+  color: #ffdf79;
+  font-size: 25px;
+}
+
+.doll-base {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 80px;
+  height: 35px;
+  border: 3px solid #b77a29;
+  border-radius: 50% 50% 15px 15px;
+  background: linear-gradient(#ffd56a, #e89132);
+}
+
+.arm {
+  position: absolute;
+  z-index: 1;
+  top: 76px;
+  width: 34px;
+  height: 10px;
+  border-radius: 10px;
+  background: #f4b67e;
+  border: 2px solid #b77a29;
+  transform-origin: 5px center;
+}
+
+.arm-left {
+  left: -4px;
+  transform: rotate(-45deg);
+  animation: armWave .55s ease-in-out infinite alternate;
+}
+
+.arm-right {
+  right: -4px;
+  transform-origin: 29px center;
+  transform: rotate(45deg);
+  animation: armWave .55s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes dollDance {
+  from { transform: rotate(-8deg) translateY(0); }
+  to { transform: rotate(8deg) translateY(-9px); }
+}
+
+@keyframes headBob {
+  from { transform: rotate(-12deg); }
+  to { transform: rotate(12deg); }
+}
+
+@keyframes armWave {
+  from { rotate: -15deg; }
+  to { rotate: 25deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doll, .doll-head, .arm {
+    animation: none;
+  }
+}
