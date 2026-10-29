@@ -50,12 +50,33 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
 @media(min-height:850px){.page{padding-top:32px;padding-bottom:25px}.hero{padding-top:6vh;padding-bottom:25px}.fact-card{padding-top:28px;padding-bottom:20px}}
 @media(max-width:420px){.page{width:calc(100% - 24px);padding-top:16px}.brand-mark{width:36px;height:36px}.eyebrow{font-size:8px;letter-spacing:1.2px}.brand{font-size:13px}.live-pill{font-size:8px;padding:7px}.hero{padding-top:28px}.hero-kicker{font-size:8px;letter-spacing:1.3px;gap:6px}.fact-card{padding:18px 17px 15px;border-radius:19px}.fact-text{min-height:70px}.stamp{font-size:8px;padding:6px 8px}.fact-count{font-size:8px}.diya-left{left:1%;bottom:5%}.diya-right{right:1%;bottom:7%}footer{font-size:8px;letter-spacing:1.4px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
-/* Traditional Thalaiyatti Bommai dancing pair */
-.dancing-dolls {
-  display: none;
+
+
+/* Traditional Thanjavur bobblehead dolls */
+.doll-template {
+  display: none !important;
 }
 
-.doll {
+.doll-party {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.party-doll {
+  position: absolute;
+  width: 100px;
+  height: 165px;
+  transform-origin: center bottom;
+  animation: dollFloat var(--duration, 2s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+  filter: drop-shadow(0 5px 10px #ffb94d22);
+}
+
+.party-doll .doll {
+  display: block;
   position: relative;
   width: 100px;
   height: 165px;
@@ -63,11 +84,7 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   animation: dollDance 1.2s ease-in-out infinite alternate;
 }
 
-.doll-right {
-  animation-delay: -.6s;
-}
-
-.doll-head {
+.party-doll .doll-head {
   position: absolute;
   z-index: 3;
   width: 68px;
@@ -81,12 +98,12 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   animation: headBob .65s ease-in-out infinite alternate;
 }
 
-.doll-right .doll-head {
+.party-doll .doll-right .doll-head {
   animation-delay: -.3s;
   background: #eeb07b;
 }
 
-.hair {
+.party-doll .hair {
   position: absolute;
   left: -3px;
   top: -5px;
@@ -96,14 +113,14 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   background: #25132b;
 }
 
-.face {
+.party-doll .face {
   position: absolute;
   inset: 17px 7px 5px;
   border-radius: 40%;
   background: #f7c18b;
 }
 
-.eye {
+.party-doll .eye {
   position: absolute;
   top: 9px;
   width: 5px;
@@ -112,10 +129,10 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   background: #29152d;
 }
 
-.eye-left { left: 10px; }
-.eye-right { right: 10px; }
+.party-doll .eye-left { left: 10px; }
+.party-doll .eye-right { right: 10px; }
 
-.bindi {
+.party-doll .bindi {
   position: absolute;
   top: 2px;
   left: 50%;
@@ -126,7 +143,7 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   transform: translateX(-50%);
 }
 
-.smile {
+.party-doll .smile {
   position: absolute;
   left: 50%;
   bottom: 4px;
@@ -137,9 +154,9 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   transform: translateX(-50%);
 }
 
-.crown {
+.party-doll .crown {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   top: -15px;
   left: 23px;
   color: #ffd75f;
@@ -147,7 +164,7 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   text-shadow: 0 0 5px #ff9e43;
 }
 
-.neck {
+.party-doll .neck {
   position: absolute;
   top: 62px;
   left: 42px;
@@ -156,7 +173,7 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   background: #d9945e;
 }
 
-.doll-body {
+.party-doll .doll-body {
   position: absolute;
   top: 70px;
   left: 18px;
@@ -169,16 +186,16 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   place-items: center;
 }
 
-.doll-right .doll-body {
+.party-doll .doll-right .doll-body {
   background: linear-gradient(90deg, #087e68, #24b58b, #087e68);
 }
 
-.ornament {
+.party-doll .ornament {
   color: #ffdf79;
   font-size: 25px;
 }
 
-.doll-base {
+.party-doll .doll-base {
   position: absolute;
   bottom: 0;
   left: 10px;
@@ -189,7 +206,7 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   background: linear-gradient(#ffd56a, #e89132);
 }
 
-.arm {
+.party-doll .arm {
   position: absolute;
   z-index: 1;
   top: 76px;
@@ -201,13 +218,13 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   transform-origin: 5px center;
 }
 
-.arm-left {
+.party-doll .arm-left {
   left: -4px;
   transform: rotate(-45deg);
   animation: armWave .55s ease-in-out infinite alternate;
 }
 
-.arm-right {
+.party-doll .arm-right {
   right: -4px;
   transform-origin: 29px center;
   transform: rotate(45deg);
@@ -229,48 +246,30 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
   to { rotate: 25deg; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .doll, .doll-head, .arm {
-    animation: none;
-  }
-}
-/* Festive dolls scattered across the screen */
-.doll-party {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.party-doll {
-  position: absolute;
-  width: 100px;
-  height: 165px;
-  transform-origin: center;
-  animation: dollFloat var(--duration, 2s) ease-in-out infinite alternate;
-  animation-delay: var(--delay, 0s);
-}
-
-.party-doll .doll {
-  display: block;
-  transform: scale(.75);
-  transform-origin: top left;
-}
-
 @keyframes dollFloat {
-  from { translate: 0 0; rotate: -8deg; }
-  to { translate: 0 -14px; rotate: 8deg; }
+  from { translate: 0 0; rotate: -7deg; }
+  to { translate: 0 -13px; rotate: 7deg; }
+}
+
+/* Keep dolls around the edges so the fact card remains readable. */
+@media (max-width: 900px) {
+  .party-doll {
+    scale: .68;
+  }
 }
 
 @media (max-width: 600px) {
   .party-doll {
-    scale: .65;
+    scale: .48;
+    opacity: .9;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .party-doll {
-    animation: none;
+  .party-doll,
+  .party-doll .doll,
+  .party-doll .doll-head,
+  .party-doll .arm {
+    animation: none !important;
   }
 }
