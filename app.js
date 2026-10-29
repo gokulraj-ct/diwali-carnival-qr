@@ -308,3 +308,44 @@ els.share.addEventListener("click", async () => {
 // The first fact appears automatically when the QR destination opens.
 refillBag();
 showFact(false);
+// Scatter traditional dancing dolls around the viewport
+const dollParty = document.getElementById("doll-party");
+
+if (dollParty) {
+  const positions = [
+    { top: "5%", left: "3%" },
+    { top: "12%", left: "84%" },
+    { top: "30%", left: "1%" },
+    { top: "24%", left: "91%" },
+    { top: "47%", left: "5%" },
+    { top: "43%", left: "88%" },
+    { top: "65%", left: "2%" },
+    { top: "70%", left: "92%" },
+    { top: "82%", left: "15%" },
+    { top: "86%", left: "78%" }
+  ];
+
+  // Reuse your existing doll HTML as the character template.
+  const template = document.querySelector(".dancing-dolls .doll");
+
+  if (template) {
+    positions.forEach((pos, index) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "party-doll";
+      wrapper.style.top = pos.top;
+      wrapper.style.left = pos.left;
+      wrapper.style.setProperty(
+        "--duration",
+        `${1.5 + Math.random() * 1.5}s`
+      );
+      wrapper.style.setProperty(
+        "--delay",
+        `${Math.random() * -2}s`
+      );
+
+      const doll = template.cloneNode(true);
+      wrapper.appendChild(doll);
+      dollParty.appendChild(wrapper);
+    });
+  }
+}
