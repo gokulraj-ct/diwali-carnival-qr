@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diwali Carnival QR Poster Maker</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eee8f7;color:#211039;font:16px system-ui,sans-serif;padding:24px}.tools{max-width:760px;margin:0 auto 18px;background:white;padding:18px;border-radius:16px;box-shadow:0 5px 25px #21103912}.tools h1{margin:0 0 8px}.tools p{line-height:1.5;color:#554767}.tools label{display:block;font-weight:700;margin:12px 0 6px}.tools input{width:100%;padding:12px;border:1px solid #cfc2dd;border-radius:9px;font:inherit}.tools button{margin-top:12px;padding:12px 16px;background:#291044;color:white;border:0;border-radius:9px;font-weight:800;cursor:pointer}.poster{width:min(100%,650px);min-height:850px;margin:auto;padding:44px 32px;text-align:center;color:#fff7ff;background:radial-gradient(circle at 50% 35%,#57217d,#170a30 72%);border:7px solid #ffd66b;outline:3px solid #9c56c5;box-shadow:0 15px 40px #21103922;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}.kicker{font-weight:900;letter-spacing:4px;color:#6ff5ec;font-size:13px}.poster h2{font-size:clamp(48px,10vw,76px);line-height:.95;letter-spacing:-3px;margin:5px 0;font-weight:1000}.poster h2 span{color:#ffd66b}.poster .sub{font-size:22px;font-weight:700;margin:0}.decor{font-size:46px;letter-spacing:12px}.qr-wrap{background:white;padding:14px;border-radius:14px;border:3px solid #ffd66b;min-width:250px;min-height:250px;display:grid;place-items:center}.qr-wrap img,.qr-wrap canvas{max-width:100%;height:auto}.qr-placeholder{color:#544266;font-size:13px;max-width:220px}.scan{font-size:21px;font-weight:1000;letter-spacing:2px;color:#ffd66b}.bottom{font-size:12px;letter-spacing:2px;color:#dfcdec;font-weight:800}.note{font-size:12px;color:#d8c5eb;max-width:450px;line-height:1.5}
+@media print{@page{size:A4 portrait;margin:0}body{padding:0;background:white}.tools{display:none}.poster{width:210mm;height:297mm;min-height:297mm;max-width:none;margin:0;border-width:7mm;outline:none;box-shadow:none;gap:20px}.poster h2{font-size:72pt}.poster .sub{font-size:22pt}.qr-wrap{width:75mm;height:75mm}.kicker{font-size:12pt}}
+</style>
+</head>
+<body>
+<section class="tools">
+<h1>🎇 Diwali Carnival QR Poster Maker</h1>
+<p>Publish your website to GitHub Pages first, then paste its public URL below. The QR code is generated in your browser using a free open-source library. Nothing is sent to a paid QR service.</p>
+<label for="site-url">Your published website URL</label>
+<input id="site-url" type="url" placeholder="https://YOUR-USERNAME.github.io/diwali-carnival-qr/" autocomplete="url">
+<button id="make-qr">Generate QR poster</button> <button onclick="window.print()">Print / Save as PDF</button>
+<p id="status" role="status">Tip: the QR code will not work for other people until your site is published publicly.</p>
+</section>
+<main class="poster">
+<div class="decor">🪔 ✨ 🪔</div>
+<div class="kicker">LIGHTS • LAUGHTER • LITTLE SURPRISES</div>
+<h2>DIWALI<br><span>CARNIVAL!</span></h2>
+<p class="sub">Your festive surprise awaits…</p>
+<div class="qr-wrap" id="qr"><div class="qr-placeholder">Your QR code will appear here after you enter your live website URL.</div></div>
+<div class="scan">SCAN ME!</div>
+<p class="sub">Discover a random Diwali fun fact 🎲</p>
+<div class="decor">🌼 ✨ 🎉</div>
+<p class="note">One scan. One surprise. Loads of festive fun!<br>Share the sparkle • Spread the joy</p>
+<div class="bottom">HAPPY DIWALI • SPREAD LIGHT. SPREAD JOY.</div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const input=document.getElementById("site-url"), qr=document.getElementById("qr"), status=document.getElementById("status");
+function makeQR(){
+ const value=input.value.trim();
+ if(!value || !/^https:\/\/.+/i.test(value)){status.textContent="Please enter the full public HTTPS URL after publishing.";input.focus();return;}
+ if(typeof QRCode==="undefined"){status.textContent="QR library could not load. Connect to the internet and reload this page.";return;}
+ qr.innerHTML="";
+ new QRCode(qr,{text:value,width:240,height:240,colorDark:"#160b35",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
+ status.textContent="QR generated. Scan-test it with a phone before printing.";
+}
+document.getElementById("make-qr").addEventListener("click",makeQR);
+input.addEventListener("keydown",e=>{if(e.key==="Enter")makeQR()});
+</script>
+</body>
+</html>
