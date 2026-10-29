@@ -273,3 +273,61 @@ footer{margin-top:auto;width:100%;display:flex;justify-content:center;align-item
     animation: none !important;
   }
 }
+
+
+/* Distinct traditional doll characters: different clothes, hair and ornaments */
+.party-doll .doll-body {
+  transition: background .3s ease;
+}
+.doll-variant-0 .doll-body { background: linear-gradient(90deg,#a91436,#f0445c,#a91436); }
+.doll-variant-1 .doll-body { background: linear-gradient(90deg,#087e68,#2bc39a,#087e68); }
+.doll-variant-2 .doll-body { background: linear-gradient(90deg,#1746a2,#3988ed,#1746a2); }
+.doll-variant-3 .doll-body { background: linear-gradient(90deg,#9b4bb6,#e18bd8,#9b4bb6); }
+.doll-variant-4 .doll-body { background: linear-gradient(90deg,#c05b12,#ffbd45,#c05b12); }
+.doll-variant-5 .doll-body { background: linear-gradient(90deg,#7b3f12,#d78a32,#7b3f12); }
+
+.doll-variant-1 .hair,
+.doll-variant-3 .hair,
+.doll-variant-5 .hair {
+  height: 30px;
+  border-radius: 48% 48% 18% 18%;
+}
+.doll-variant-1 .hair::before,
+.doll-variant-3 .hair::before,
+.doll-variant-5 .hair::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 22px;
+  right: -5px;
+  top: 10px;
+  border-radius: 50%;
+  background: #25132b;
+}
+.doll-variant-2 .hair {
+  height: 18px;
+  border-radius: 50% 50% 12% 12%;
+}
+.doll-variant-4 .hair {
+  height: 27px;
+  border-radius: 48% 48% 30% 30%;
+  background: #3a1b12;
+}
+.doll-variant-2 .crown { color: #fff0a0; font-size: 31px; top: -19px; }
+.doll-variant-3 .crown { color: #ff8cc8; }
+.doll-variant-4 .crown { color: #8cf4e5; }
+.doll-variant-5 .crown { color: #ffad5c; }
+
+.doll-variant-1 .doll-base { background: linear-gradient(#72e0b6,#087e68); }
+.doll-variant-2 .doll-base { background: linear-gradient(#8ac5ff,#2554b8); }
+.doll-variant-3 .doll-base { background: linear-gradient(#ffc3ef,#a53f9c); }
+.doll-variant-4 .doll-base { background: linear-gradient(#ffe28b,#d06b16); }
+.doll-variant-5 .doll-base { background: linear-gradient(#e9bb74,#8e4c1c); }
+
+.doll-variant-2 .doll-body,
+.doll-variant-4 .doll-body {
+  border-radius: 18px 18px 23px 23px;
+}
+.doll-variant-3 .ornament { color: #fff5fe; }
+.doll-variant-4 .ornament { color: #fff8d5; }
+.doll-variant-5 .ornament { color: #ffdf9c; }
