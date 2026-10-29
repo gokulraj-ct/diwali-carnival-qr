@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#160b35">
+  <meta name="description" content="Scan into the Diwali Carnival and discover a fun festival fact!">
+  <title>Diwali Carnival — Surprise Fact!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <span class="spark spark-1">✦</span><span class="spark spark-2">✧</span>
+    <span class="spark spark-3">✦</span><span class="spark spark-4">✧</span>
+    <span class="spark spark-5">✦</span><span class="spark spark-6">✧</span>
+    <span class="floating-diya diya-left">🪔</span><span class="floating-diya diya-right">🪔</span>
+  </div>
+  <main class="page">
+    <header class="topline">
+      <div class="brand-mark" aria-hidden="true">✹</div>
+      <div><p class="eyebrow">LIGHTS • LAUGHTER • LITTLE SURPRISES</p><p class="brand">THE DIWALI <span>CARNIVAL</span></p></div>
+      <div class="live-pill"><span></span> FESTIVE MODE</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-kicker"><span>✦</span> YOUR FESTIVE SURPRISE AWAITS <span>✦</span></div>
+      <h1>SCAN. <span>SMILE.</span><br>GET LIT!</h1>
+      <p class="hero-copy">A little Diwali magic, one fun fact at a time.</p>
+      <div class="festive-rule"><span>✧</span><i></i><span>🪔</span><i></i><span>✧</span></div>
+    </section>
+
+    <section class="fact-card" aria-live="polite">
+      <div class="card-top"><span class="stamp">✦ SURPRISE FACT ✦</span><span class="fact-count" id="fact-count">FACT 01 / 40</span></div>
+      <div class="fact-icon" id="fact-icon" aria-hidden="true">🪔</div>
+      <p class="fact-category" id="fact-category">LIGHT UP YOUR KNOWLEDGE</p>
+      <h2 id="fact-title">Let the fun begin!</h2>
+      <p class="fact-text" id="fact-text">Your first Diwali surprise is ready.</p>
+      <div class="card-bottom"><span>✦</span><span>SHARE THE SPARKLE</span><span>✦</span></div>
+    </section>
+
+    <div class="actions">
+      <button class="surprise-button" id="next-fact" type="button"><span>🎲</span> DISCOVER ANOTHER FACT <span class="button-arrow">↗</span></button>
+      <button class="share-button" id="share-fact" type="button">↗ Share this surprise</button>
+    </div>
+    <p class="hint"><span>💡</span> Keep tapping — discover all 40 festive facts!</p>
+
+    <footer><span>HAPPY DIWALI</span><span class="footer-star">✦</span><span>SPREAD LIGHT. SPREAD JOY.</span></footer>
+  </main>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+  <script src="app.js"></script>
+</body>
+</html>
