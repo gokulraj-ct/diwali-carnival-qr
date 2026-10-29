@@ -15,6 +15,7 @@
     <span class="spark spark-5">✦</span><span class="spark spark-6">✧</span>
     <span class="floating-diya diya-left">🪔</span><span class="floating-diya diya-right">🪔</span>
   </div>
+
   <main class="page">
     <header class="topline">
       <div class="brand-mark" aria-hidden="true">✹</div>
@@ -45,10 +46,30 @@
     <p class="hint"><span>💡</span> Keep tapping — discover all 40 festive facts!</p>
 
     <footer><span>HAPPY DIWALI</span><span class="footer-star">✦</span><span>SPREAD LIGHT. SPREAD JOY.</span></footer>
-    <div class="doll-party" aria-hidden="true">
-      <div class="dancing-dolls" id="doll-party"></div>
-    </div>
   </main>
+
+  <!-- The invisible template is cloned by app.js into scattered dancing dolls. -->
+  <template id="doll-template">
+    <div class="doll doll-left">
+      <div class="doll-head">
+        <div class="hair"></div>
+        <div class="face">
+          <span class="eye eye-left"></span>
+          <span class="eye eye-right"></span>
+          <span class="bindi"></span>
+          <span class="smile"></span>
+        </div>
+        <div class="crown">✦</div>
+      </div>
+      <div class="neck"></div>
+      <div class="doll-body"><div class="ornament">✺</div></div>
+      <div class="doll-base"></div>
+      <div class="arm arm-left"></div>
+      <div class="arm arm-right"></div>
+    </div>
+  </template>
+
+  <div class="doll-party" id="doll-party" aria-hidden="true"></div>
   <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
   <script src="app.js"></script>
 </body>
