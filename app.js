@@ -341,7 +341,7 @@ showFact(false);
 
   positions.forEach((position, index) => {
     const wrapper = document.createElement("div");
-    wrapper.className = "party-doll";
+    wrapper.className = `party-doll doll-variant-${index % 6}`;
     wrapper.style.top = position.top;
     wrapper.style.left = position.left;
     wrapper.style.setProperty("--duration", `${1.6 + (index % 4) * 0.35}s`);
@@ -349,13 +349,17 @@ showFact(false);
 
     const clone = template.content.firstElementChild.cloneNode(true);
     const doll = clone.querySelector(".doll");
-    if (doll && index % 2 === 1) {
-      doll.classList.remove("doll-left");
-      doll.classList.add("doll-right");
+    if (doll) {
+      doll.classList.remove("doll-left", "doll-right");
+      doll.classList.add(index % 2 === 0 ? "doll-left" : "doll-right");
+      // Give each character a different traditional hairstyle/accessory.
+      const crown = doll.querySelector(".crown");
+      const ornament = doll.querySelector(".ornament");
+      if (crown) crown.textContent = ["✦", "✿", "♛", "❋", "✺", "❀"][index % 6];
+      if (ornament) ornament.textContent = ["✺", "✿", "ॐ", "❋", "✦", "❀"][index % 6];
     }
 
     wrapper.appendChild(clone);
     party.appendChild(wrapper);
   });
 })();
-
